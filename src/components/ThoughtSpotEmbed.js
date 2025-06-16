@@ -2,20 +2,18 @@ import React, { useEffect, useRef } from 'react';
 import {
   init,
   LiveboardEmbed,
-  //EmbedEvent,
   Action,
   RuntimeFilterOp,
 } from '@thoughtspot/visual-embed-sdk';
-import { TS_HOST, LIVEBOARD_ID, VIZ_ID } from '../config';
+import { TS_HOST } from '../config';
 
-const ThoughtSpotEmbed = ({ days, columnName }) => {
+const ThoughtSpotEmbed = ({ days, columnName, liveboardId, vizId }) => {
   const embedRef = useRef(null);
 
   useEffect(() => {
-    // Initialize ThoughtSpot SDK
     init({
       thoughtSpotHost: TS_HOST,
-      authType: 'None', // or 'None' if public embed with no login
+      authType: 'None',
     });
   }, []);
 
@@ -23,15 +21,14 @@ const ThoughtSpotEmbed = ({ days, columnName }) => {
     if (embedRef.current) {
       embedRef.current.innerHTML = '';
     }
-    console.log(days);
+
     const embed = new LiveboardEmbed('#ts-embed', {
-      liveboardId: LIVEBOARD_ID,
-      vizId: VIZ_ID,
-      //visibleActions: [Action.Save],
+      liveboardId,
+      vizId,
       hiddenActions: [Action.DownloadAsCSV],
       runtimeFilters: [
         {
-          columnName: 'Click Date Time AZ',
+          columnName,
           operator: RuntimeFilterOp.GT,
           values: [new Date(days).getTime() / 1000],
         },
@@ -39,11 +36,9 @@ const ThoughtSpotEmbed = ({ days, columnName }) => {
     });
 
     embed.render();
-    //embedRef.current = embed;
+  }, [days, columnName, liveboardId, vizId]);
 
-  }, [days, columnName]);
-
-  return <div id="ts-embed" style={{ height: '600px', width: '100%' }} />;
+  return <div id="ts-embed" style={{ height: '600px', width: '100%' }} ref={embedRef} />;
 };
 
 export default ThoughtSpotEmbed;
