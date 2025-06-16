@@ -23,23 +23,23 @@ const ThoughtSpotEmbed = ({ days, columnName }) => {
     if (embedRef.current) {
       embedRef.current.innerHTML = '';
     }
-
+    console.log(days);
     const embed = new LiveboardEmbed('#ts-embed', {
       liveboardId: LIVEBOARD_ID,
       vizId: VIZ_ID,
-      visibleActions: [Action.Save],
-      //hiddenActions: [Action.DownloadAsCSV],
+      //visibleActions: [Action.Save],
+      hiddenActions: [Action.DownloadAsCSV],
       runtimeFilters: [
         {
           columnName: 'Click Date Time AZ',
-          operator: RuntimeFilterOp.LAST_N_DAYS,
-          values: [days],
+          operator: RuntimeFilterOp.GT,
+          values: [new Date(days).getTime() / 1000],
         },
       ],
     });
 
     embed.render();
-    embedRef.current = embed;
+    //embedRef.current = embed;
 
   }, [days, columnName]);
 

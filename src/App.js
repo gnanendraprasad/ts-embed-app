@@ -2,22 +2,32 @@ import React, { useState } from 'react';
 import ThoughtSpotEmbed from './components/ThoughtSpotEmbed';
 
 function App() {
-  const [days, setDays] = useState(30);
+  const getDefaultDateTime = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const [days, setDays] = useState(getDefaultDateTime());
   const columnName = "Click Date Time AZ";
 
   return (
     <div>
       <h2>ThoughtSpot Visualization</h2>
       <label>
-        Select Time Range:
-        <select value={days} onChange={(e) => setDays(Number(e.target.value))}>
-          <option value={30}>Last 30 Days</option>
-          <option value={60}>Last 60 Days</option>
-          <option value={90}>Last 90 Days</option>
-        </select>
+        Select Date From:
+        <input
+          type="date"
+          value={days}
+          onChange={(e) => {
+            setDays(e.target.value); // Already in the correct format
+          }}
+        />
       </label>
 
-     <ThoughtSpotEmbed days={days} columnName={columnName} />
+      <ThoughtSpotEmbed days={days} columnName={columnName} />
     </div>
   );
 }
