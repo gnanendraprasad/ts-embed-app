@@ -15,17 +15,15 @@ function App() {
   const menuItems = [
     {
       key: 'dashboard1',
-      label: 'Sales Dashboard',
+      label: 'Quotes & Binds',
       liveboardId: 'ca34dc1c-8a8d-4cb7-bb29-5c50d3d67bd1',
       vizId: 'a1cdfa62-6db6-446b-9cc2-692a9d26ee2f',
     },
     {
       key: 'dashboard2',
-      label: 'Marketing Overview',
-    },
-    {
-      key: 'dashboard3',
-      label: 'Operations View',
+      label: 'Stellantis',
+      liveboardId: '610981b7-bd20-4ffd-89a0-53a159f36c43',
+      vizId: 'bdb45b2c-1be6-4642-861b-e628d50b2215',
     },
   ];
 
@@ -70,7 +68,12 @@ function App() {
           </>
         ) : (
           <div className="placeholder">
-            <p>Visualization not available yet.</p>
+            <ThoughtSpotEmbed
+              days={days}
+              columnName={columnName}
+              liveboardId={selectedItem.liveboardId}
+              vizId={selectedItem.vizId}
+            />
           </div>
         )}
       </div>

@@ -25,7 +25,7 @@ const ThoughtSpotEmbed = ({ days, columnName, liveboardId, vizId }) => {
     const embed = new LiveboardEmbed('#ts-embed', {
       liveboardId,
       vizId,
-      hiddenActions: [Action.DownloadAsCSV],
+      hiddenActions: [Action.CopyLink, Action.Download, Action.ShowUnderlyingData, Action.Pin, Action.SpotIQAnalyze, Action.RenameModalTitleDescription, Action.SpotterFeedback],
       runtimeFilters: [
         {
           columnName,
