@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ThoughtSpotEmbed from "./components/ThoughtSpotEmbed";
 import "./App.css";
+import { Tab } from "react-bootstrap";
 import Tabs from "react-bootstrap/Tabs";
-import Tab from "react-bootstrap/Tab";
 import TabHandler from "./components/TabHandler";
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
           tabLabel: "Summary",
           vizIds: [
             "bdb45b2c-1be6-4642-861b-e628d50b2215",
-            "12345678-9abc-def0-1234-56789abcdef0", // Replace with actual second viz ID
+            "1a15df7e-dd4c-4866-ad5d-307877ab8588", // Replace with actual second viz ID
           ],
         },
       ],
@@ -110,6 +110,7 @@ function App() {
                 return (
                   <Tab eventKey={tab.id} title={tab.tabLabel}>
                     <TabHandler tab={tab} selectedItem={selectedItem} columnName={columnName} days={days} setDays={setDays}/>
+
                   </Tab>
                 );
               })}

@@ -24,7 +24,7 @@ const TabHandler = ({tab,selectedItem,selectedTabIndex,days, setDays, columnName
                           <ThoughtSpotEmbed
                             key={vizId + idx}
                             days={days}
-                            columnName={columnName}
+                            columnName={'Click Date Time AZ'}
                             liveboardId={selectedItem.liveboardId}
                             vizId={vizId}
                           />
