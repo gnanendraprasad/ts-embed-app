@@ -15,7 +15,6 @@ export function initThoughtSpot() {
 
 export function embedViz(selector, { liveboardId, vizId, runtimeFilters = [] }) {
   initThoughtSpot();
-
   const embed = new LiveboardEmbed(selector, {
     liveboardId,
     vizId,

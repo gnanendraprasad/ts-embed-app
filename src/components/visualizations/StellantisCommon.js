@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { embedViz, RuntimeFilterOp } from '../../tsEmbed';
 
-const vizId = '1a15df7e-dd4c-4866-ad5d-307877ab8588';
-
-const StellantisVizTwo = ({ liveboardId, policyId, deviceId, tripId }) => {
-  const containerId = 'stellantis-viz-two';
+const StellantisCommon = ({containerId, vizId, liveboardId, policyId, deviceId, tripId }) => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -41,9 +38,9 @@ const StellantisVizTwo = ({ liveboardId, policyId, deviceId, tripId }) => {
     }
 
     embedViz(`#${containerId}`, { liveboardId, vizId, runtimeFilters });
-  }, [liveboardId, policyId, deviceId, tripId]);
+  }, [liveboardId, policyId, deviceId, tripId, vizId, containerId]);
 
   return <div id={containerId} style={{ height: '600px', width: '100%' }} ref={ref} />;
 };
 
-export default StellantisVizTwo;
+export default StellantisCommon;

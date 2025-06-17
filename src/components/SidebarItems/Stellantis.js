@@ -1,6 +1,5 @@
 import React from "react";
-import StellantisVizOne from "../visualizations/StellantisVizOne";
-import StellantisVizTwo from "../visualizations/StellantisVizTwo";
+import StellantisCommon from "../visualizations/StellantisCommon";
 
 const Stellantis = ({ selectedItem, policyId, setPolicyId, deviceId, setDeviceId, tripId, setTripId }) => {
   if (!selectedItem) {
@@ -35,20 +34,22 @@ const Stellantis = ({ selectedItem, policyId, setPolicyId, deviceId, setDeviceId
           />
         </div>
       </div>
-
-      <StellantisVizOne
+      <StellantisCommon
         liveboardId={selectedItem.liveboardId}
         policyId={policyId}
         deviceId={deviceId}
         tripId={tripId}
+        vizId={"5c627138-64d6-4087-9fb2-63576962a798"}
+        containerId={"stellantis-viz-one"}
       />
-
-      <StellantisVizTwo
+       <StellantisCommon
         liveboardId={selectedItem.liveboardId}
         policyId={policyId}
         deviceId={deviceId}
         tripId={tripId}
-      />
+        vizId={"1a15df7e-dd4c-4866-ad5d-307877ab8588"}
+        containerId={"stellantis-viz-two"}
+      /> 
     </>
   );
 };
