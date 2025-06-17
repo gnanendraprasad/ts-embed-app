@@ -1,4 +1,4 @@
-import { init, LiveboardEmbed, Action, RuntimeFilterOp } from '@thoughtspot/visual-embed-sdk';
+import { init, LiveboardEmbed, Action /*,RuntimeFilterOp*/ } from '@thoughtspot/visual-embed-sdk';
 import { TS_HOST } from './config';
 
 let initialized = false;
