@@ -1,5 +1,6 @@
 import React from "react";
-import ThoughtSpotEmbed from "../ThoughtSpotEmbed";
+import StellantisVizOne from "../visualizations/StellantisVizOne";
+import StellantisVizTwo from "../visualizations/StellantisVizTwo";
 
 const Stellantis = ({ selectedItem, selectedTabIndex, days, columnName, policyId, setPolicyId, deviceId, setDeviceId, tripId, setTripId }) => {
   if (!selectedItem) {
@@ -35,18 +36,19 @@ const Stellantis = ({ selectedItem, selectedTabIndex, days, columnName, policyId
         </div>
       </div>
 
-      {selectedItem.tabs[selectedTabIndex].vizIds.map((vizId, idx) => (
-        <ThoughtSpotEmbed
-          key={vizId + idx}
-          days={days}
-          columnName={columnName}
-          liveboardId={selectedItem.liveboardId}
-          vizId={vizId}
-          policyId={policyId}
-          deviceId={deviceId}
-          tripId={tripId}
-        />
-      ))}
+      <StellantisVizOne
+        liveboardId={selectedItem.liveboardId}
+        policyId={policyId}
+        deviceId={deviceId}
+        tripId={tripId}
+      />
+
+      <StellantisVizTwo
+        liveboardId={selectedItem.liveboardId}
+        policyId={policyId}
+        deviceId={deviceId}
+        tripId={tripId}
+      />
     </>
   );
 };

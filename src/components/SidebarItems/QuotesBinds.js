@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, Tab } from "react-bootstrap";
-import ThoughtSpotEmbed from "../ThoughtSpotEmbed";
-import TabHandler from "../TabHandler";
+import QuotesCompletionRate from "../visualizations/QuotesCompletionRate";
+import QuotesStartedByMonth from "../visualizations/QuotesStartedByMonth";
 
 const QuotesBinds = ({ selectedItem, selectedTabIndex, handleTabChange, days, setDays, columnName }) => {
   if (!selectedItem) {
@@ -17,17 +17,25 @@ const QuotesBinds = ({ selectedItem, selectedTabIndex, handleTabChange, days, se
         fill
         onSelect={(k) => handleTabChange(parseInt(k))}
       >
-        {selectedItem.tabs.map((tab) => (
-          <Tab eventKey={tab.id} title={tab.tabLabel} key={tab.id}>
-            <TabHandler
-              tab={tab}
-              selectedItem={selectedItem}
-              days={days}
-              setDays={setDays}
-              columnName={columnName}
+        <Tab eventKey={0} title="Quotes Completion Rate">
+          <div className="date-picker">
+            <label htmlFor="dateInput">Select Date From:</label>
+            <input
+              id="dateInput"
+              type="date"
+              value={days}
+              onChange={(e) => setDays(e.target.value)}
             />
-          </Tab>
-        ))}
+          </div>
+          <QuotesCompletionRate
+            liveboardId={selectedItem.liveboardId}
+            days={days}
+            columnName={columnName}
+          />
+        </Tab>
+        <Tab eventKey={1} title="Quotes Started by Month">
+          <QuotesStartedByMonth liveboardId={selectedItem.liveboardId} />
+        </Tab>
       </Tabs>
     </>
   );
