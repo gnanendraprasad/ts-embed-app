@@ -22,7 +22,6 @@ const QuotesBinds = ({ selectedItem, selectedTabIndex, handleTabChange, days, se
             <TabHandler
               tab={tab}
               selectedItem={selectedItem}
-              selectedTabIndex={selectedTabIndex}
               days={days}
               setDays={setDays}
               columnName={columnName}
@@ -30,16 +29,6 @@ const QuotesBinds = ({ selectedItem, selectedTabIndex, handleTabChange, days, se
           </Tab>
         ))}
       </Tabs>
-
-      {selectedItem.tabs[selectedTabIndex].vizIds.map((vizId, idx) => (
-        <ThoughtSpotEmbed
-          key={vizId + idx}
-          days={days}
-          columnName={columnName}
-          liveboardId={selectedItem.liveboardId}
-          vizId={vizId}
-        />
-      ))}
     </>
   );
 };
