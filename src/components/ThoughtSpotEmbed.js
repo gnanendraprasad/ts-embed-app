@@ -58,6 +58,11 @@ const ThoughtSpotEmbed = ({
 
     if (tripId) {
       runtimeFilters.push({
+        columnName: 'Id',
+        operator: RuntimeFilterOp.EQ,
+        values: [tripId],
+      });
+      runtimeFilters.push({
         columnName: 'Trip ID',
         operator: RuntimeFilterOp.EQ,
         values: [tripId],
