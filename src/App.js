@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import ThoughtSpotEmbed from "./components/ThoughtSpotEmbed";
 import "./App.css";
-import { Tab } from "react-bootstrap";
-import Tabs from "react-bootstrap/Tabs";
-import TabHandler from "./components/TabHandler";
+import QuotesBinds from "./components/SidebarItems/QuotesBinds";
+import Stellantis from "./components/SidebarItems/Stellantis";
 
 function App() {
   const getDefaultDateTime = () => {
@@ -98,68 +96,30 @@ function App() {
         </div> */}
 
         {selectedMenu === "dashboard1" && (
-          <>
-            <Tabs
-              defaultActiveKey={`${selectedItem.tabs[selectedTabIndex].id}`}
-              id="fill-tab-example"
-              className="mb-3"
-              fill
-              onSelect={(k) => handleTabChange(parseInt(k))}
-            >
-              {selectedItem.tabs.map((tab, index) => {
-                return (
-                  <Tab eventKey={tab.id} title={tab.tabLabel}>
-                    <TabHandler tab={tab} selectedItem={selectedItem} columnName={columnName} days={days} setDays={setDays}/>
-
-                  </Tab>
-                );
-              })}
-            </Tabs>
-          </>
+          <QuotesBinds
+            selectedItem={selectedItem}
+            selectedTabIndex={selectedTabIndex}
+            handleTabChange={handleTabChange}
+            days={days}
+            setDays={setDays}
+            columnName={columnName}
+          />
         )}
 
         {selectedMenu === "dashboard2" && (
-          <div className="filter-row">
-            <div>
-              <label>Policy ID:</label>
-              <input
-                type="text"
-                value={policyId}
-                onChange={(e) => setPolicyId(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Device ID:</label>
-              <input
-                type="text"
-                value={deviceId}
-                onChange={(e) => setDeviceId(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Trip ID:</label>
-              <input
-                type="text"
-                value={tripId}
-                onChange={(e) => setTripId(e.target.value)}
-              />
-            </div>
-          </div>
+          <Stellantis
+            selectedItem={selectedItem}
+            selectedTabIndex={selectedTabIndex}
+            days={days}
+            columnName={columnName}
+            policyId={policyId}
+            setPolicyId={setPolicyId}
+            deviceId={deviceId}
+            setDeviceId={setDeviceId}
+            tripId={tripId}
+            setTripId={setTripId}
+          />
         )}
-        {selectedItem.tabs[selectedTabIndex].vizIds.map(
-                        (vizId, idx) => (
-                          <ThoughtSpotEmbed
-                            key={vizId + idx}
-                            days={days}
-                            columnName={columnName}
-                            liveboardId={selectedItem.liveboardId}
-                            vizId={vizId}
-                            policyId={policyId}
-                            deviceId={deviceId}
-                            tripId={tripId}
-                          />
-                        )
-                      )}
       </div>
       
     </div>
