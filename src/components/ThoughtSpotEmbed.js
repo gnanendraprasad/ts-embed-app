@@ -7,15 +7,7 @@ import {
 } from '@thoughtspot/visual-embed-sdk';
 import { TS_HOST } from '../config';
 
-const ThoughtSpotEmbed = ({
-  days,
-  columnName,
-  liveboardId,
-  vizId,
-  policyId,
-  deviceId,
-  tripId
-}) => {
+const ThoughtSpotEmbed = ({days, columnName, liveboardId, vizId, policyId, deviceId, tripId}) => {
   const embedRef = useRef(null);
 
   useEffect(() => {
