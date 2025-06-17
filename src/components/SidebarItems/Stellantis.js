@@ -2,7 +2,7 @@ import React from "react";
 import StellantisVizOne from "../visualizations/StellantisVizOne";
 import StellantisVizTwo from "../visualizations/StellantisVizTwo";
 
-const Stellantis = ({ selectedItem, selectedTabIndex, days, columnName, policyId, setPolicyId, deviceId, setDeviceId, tripId, setTripId }) => {
+const Stellantis = ({ selectedItem, policyId, setPolicyId, deviceId, setDeviceId, tripId, setTripId }) => {
   if (!selectedItem) {
     return null;
   }
