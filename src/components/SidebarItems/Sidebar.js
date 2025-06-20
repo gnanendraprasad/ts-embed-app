@@ -16,6 +16,9 @@ const Sidebar = ({selectedMenu, setSelectedMenu, menuItems}) => {
             {item.key}
           </div>
         ))}
+        <div key={"Data Check"} className={`menu-item ${selectedMenu === "Data Check" ? "active" : ""}`} onClick={()=>{setSelectedMenu("Data Check");}}>
+        {"Data Check"}
+        </div>
     </>
   );
 };

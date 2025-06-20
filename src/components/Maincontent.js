@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Stellantis from "./SidebarItems/Stellantis";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import TokenFetch from "./TokenFetch";
 
 const Maincontent = ({ selectedMenu, menuItems }) => {
   const [policyId, setPolicyId] = useState("");
@@ -12,6 +13,7 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
 
   return (
     <>
+    {selectedMenu === "Stellantis"?(
       <Tabs
         defaultActiveKey="profile"
         id="fill-tab-example"
@@ -34,7 +36,10 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
         <Tab eventKey="opt2" title="Option2">
 
         </Tab>
-      </Tabs>
+      </Tabs>):(
+        <TokenFetch />
+      )
+}
     </>
   );
 };
