@@ -5,7 +5,7 @@ const Sidebar = ({selectedMenu, setSelectedMenu, menuItems}) => {
   return (
     <>
     <div className="brand">Novo</div>
-        {menuItems.map((item) => (
+        {/* {menuItems.map((item) => (
           <div
             key={item.key}
             className={`menu-item ${selectedMenu === item.key ? "active" : ""}`}
@@ -15,7 +15,10 @@ const Sidebar = ({selectedMenu, setSelectedMenu, menuItems}) => {
           >
             {item.key}
           </div>
-        ))}
+        ))} */}
+        <div key={"Stellantis"} className={`menu-item ${selectedMenu === "Stellantis" ? "active" : ""}`} onClick={()=>{setSelectedMenu("Stellantis");}}>
+        {"Stellantis"}
+        </div>
         <div key={"Data Check"} className={`menu-item ${selectedMenu === "Data Check" ? "active" : ""}`} onClick={()=>{setSelectedMenu("Data Check");}}>
         {"Data Check"}
         </div>

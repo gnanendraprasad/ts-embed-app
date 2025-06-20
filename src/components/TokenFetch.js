@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TS_HOST, username, password } from "../config";
 
-const URL = TS_HOST + "/api/rest/2.0/auth/token/full";
+const URL = TS_HOST + "/callosum/v1/tspublic/v1/session/login";
 
 const TokenFetch = () => {
     const [token, setToken] = useState(null);
@@ -12,12 +12,14 @@ const TokenFetch = () => {
                 const response = await fetch(URL, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json",
+                        "Content-Type": "application/x-www-form-urlencoded",
                         "Accept": "application/json",
+                        "X-Requested-By":"ThoughtSpot"
                     },
                     body: JSON.stringify({
-                        username,
-                        password,
+                        "username":username,
+                        "password":password,
+                        "rememberme":"false"
                     })
                 });
 
@@ -33,7 +35,7 @@ const TokenFetch = () => {
     return (
         <div>
             {token ? (
-                <div>Token: {JSON.stringify(token.token)}</div>
+                <div>Cookie is set</div>
             ) : (
                 <div>Loading...</div>
             )}
