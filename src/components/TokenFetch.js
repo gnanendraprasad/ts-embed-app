@@ -4,7 +4,7 @@ import { TS_HOST, username, password } from "../config";
 const URL = TS_HOST + "/callosum/v1/tspublic/v1/session/login";
 
 const TokenFetch = () => {
-    const [token, setToken] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const conn = async () => {
@@ -14,19 +14,25 @@ const TokenFetch = () => {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
                         "Accept": "application/json",
-                        "X-Requested-By":"ThoughtSpot"
+                        "X-Requested-By": "ThoughtSpot"
                     },
-                    body: JSON.stringify({
-                        "username":username,
-                        "password":password,
-                        "rememberme":"false"
-                    })
+                    body: new URLSearchParams({
+                        username,
+                        password,
+                        rememberme: "false"
+                    }),
+                    credentials: "include" // Important for cookies!
                 });
 
-                const data = await response.json();
-                setToken(data);
+                if (response.status === 204 || response.ok) {
+                    setIsLoggedIn(true);
+                } else {
+                    setIsLoggedIn(false);
+                    // Optionally, handle error response here
+                }
             } catch (error) {
-                console.error("Error fetching token:", error);
+                console.error("Error fetching session:", error);
+                setIsLoggedIn(false);
             }
         };
         conn();
@@ -34,7 +40,7 @@ const TokenFetch = () => {
 
     return (
         <div>
-            {token ? (
+            {isLoggedIn ? (
                 <div>Cookie is set</div>
             ) : (
                 <div>Loading...</div>
