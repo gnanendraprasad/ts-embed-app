@@ -39,13 +39,17 @@ const TokenFetch = () => {
     }, []);
 
     return (
-        <div>
+        <>
             {isLoggedIn ? (
-                <div>Cookie is set</div>
-            ) : (
-                <div>Loading...</div>
-            )}
-        </div>
+            <>
+                {console.log("Cookie is set")}
+            </>
+        ) : (
+            <>
+                {console.log("Loading")}
+            </>
+        )}
+        </>
     );
 };
 

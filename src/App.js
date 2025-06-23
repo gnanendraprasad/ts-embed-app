@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="app-container">
-
+      
       <div className="sidebar">
         <Sidebar selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} menuItems={menuItems}/>
       </div>

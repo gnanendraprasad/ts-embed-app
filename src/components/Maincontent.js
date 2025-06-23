@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Stellantis from "./SidebarItems/Stellantis";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import TokenFetch from "./TokenFetch";
 
 const Maincontent = ({ selectedMenu, menuItems }) => {
   const [policyId, setPolicyId] = useState("");
@@ -37,7 +36,7 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
 
         </Tab>
       </Tabs>):(
-        <TokenFetch />
+        <h1>Nothing here yet</h1>
       )
 }
     </>
