@@ -11,7 +11,7 @@ body {
 
 .sidebar {
   width: 15vw;
-  background-color: #1e1e2f;
+  background-color: #0E0727;
   color: white;
   padding: 30px 10px;
   display: flex;
@@ -21,7 +21,7 @@ body {
 .brand {
   font-size: 26px;
   font-weight: 700;
-  color: #4ade80;
+  color: #FFC300;
   margin-bottom: 40px;
   text-align: center;
   letter-spacing: 1px;
@@ -37,12 +37,12 @@ body {
 }
 
 .menu-item:hover {
-  background-color: #2e2e42;
+  background-color: #24114e;
 }
 
 .menu-item.active {
-  background-color: #4ade80;
-  color: #1e1e2f;
+  background-color: #FFC300;
+  color: #0E0727;
   font-weight: 600;
 }
 
@@ -77,8 +77,8 @@ body {
 }
 
 .tab-button.active {
-  background-color: #4ade80;
-  color: white;
+  background-color: #FFC300;
+  color: #0E0727;
 }
 
 .date-picker,
@@ -102,4 +102,26 @@ input[type="date"],
   border: 1px solid #d1d5db;
   border-radius: 4px;
   font-size: 14px;
+}
+
+.header-navbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: #0E0727;
+  padding: 10px;
+}
+
+.nav-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  color: white;
+}
+
+.nav-item.active {
+  background-color: #FFC300;
+  color: #0E0727;
+  font-weight: 600;
 }

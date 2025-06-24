@@ -18,6 +18,26 @@ const Stellantis = ({
   const [tripOptions, setTripOptions] = useState([]);
   const [deviceOptions, setDeviceOptions] = useState([]);
 
+  const selectStyles = {
+    control: (provided) => ({
+      ...provided,
+      minHeight: "30px",
+      fontSize: "12px",
+    }),
+    option: (provided) => ({
+      ...provided,
+      fontSize: "12px",
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      fontSize: "12px",
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      fontSize: "12px",
+    }),
+  };
+
   const [loadingPolicies, setLoadingPolicies] = useState(true);
   const [loadingTrips, setLoadingTrips] = useState(true);
   const [loadingDevices, setLoadingDevices] = useState(true);
@@ -76,6 +96,7 @@ const Stellantis = ({
               onChange={(selected) => setPolicyId(selected?.value || "")}
               placeholder="Select a Policy ID"
               isClearable
+              styles={selectStyles}
             />
           )}
         </div>
@@ -91,6 +112,7 @@ const Stellantis = ({
               onChange={(selected) => setDeviceId(selected?.value || "")}
               placeholder="Select a Device ID"
               isClearable
+              styles={selectStyles}
             />
           )}
         </div>
@@ -106,6 +128,7 @@ const Stellantis = ({
               onChange={(selected) => setTripId(selected?.value || "")}
               placeholder="Select a Trip ID"
               isClearable
+              styles={selectStyles}
             />
           )}
         </div>
