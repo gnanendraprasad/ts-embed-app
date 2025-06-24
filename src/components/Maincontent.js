@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import Stellantis from "./SidebarItems/Stellantis";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import HeaderNav from "./HeaderNav";
 
 const Maincontent = ({ selectedMenu, menuItems }) => {
   const [policyId, setPolicyId] = useState("");
   const [deviceId, setDeviceId] = useState("");
   const [tripId, setTripId] = useState("");
+  const [activeTab, setActiveTab] = useState("gps");
 
   const selectedItem = menuItems.find((item) => item.key === selectedMenu);
 
   return (
     <div>
-    {selectedMenu === "Stellantis"?(
-      <Tabs
-        defaultActiveKey="gps"
-        id="fill-tab-example"
-        className="mb-3"
-        fill
-      >
-        <Tab eventKey="gps" title="GPS">
-          {selectedMenu === "Stellantis" && (
+      {selectedMenu === "Stellantis" && (
+        <>
+          <HeaderNav activeTab={activeTab} setActiveTab={setActiveTab} />
+          {activeTab === "gps" && (
             <Stellantis
               selectedItem={selectedItem}
               policyId={policyId}
@@ -31,13 +26,8 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
               setTripId={setTripId}
             />
           )}
-        </Tab>
-      </Tabs>
-      ):(
-      <>
-      </>
-      )
-    }
+        </>
+      )}
     </div>
   );
 };
