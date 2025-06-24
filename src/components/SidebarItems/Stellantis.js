@@ -86,7 +86,7 @@ const Stellantis = ({
     <>
       <div className="filter-row">
         <div>
-          <label>Policy ID:</label>
+          {/* <label>Policy ID:</label> */}
           {loadingPolicies ? (
             <p>Loading...</p>
           ) : (
@@ -102,7 +102,7 @@ const Stellantis = ({
         </div>
 
         <div>
-          <label>Device ID:</label>
+          {/* <label>Device ID:</label> */}
           {loadingDevices ? (
             <p>Loading...</p>
           ) : (
@@ -118,7 +118,7 @@ const Stellantis = ({
         </div>
 
         <div>
-          <label>Trip ID:</label>
+          {/* <label>Trip ID:</label> */}
           {loadingTrips ? (
             <p>Loading...</p>
           ) : (

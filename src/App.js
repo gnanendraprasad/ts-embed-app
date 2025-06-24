@@ -29,7 +29,7 @@ function App() {
         <Sidebar selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} menuItems={menuItems}/>
       </div>
 
-      <div className="main-content" style={{padding:"8px"}}>
+      <div className="main-content" style={{padding:"0px"}}>
         <Maincontent selectedMenu={selectedMenu} menuItems={menuItems}/>
       </div>
       

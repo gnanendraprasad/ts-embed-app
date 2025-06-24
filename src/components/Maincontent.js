@@ -11,7 +11,7 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
   const selectedItem = menuItems.find((item) => item.key === selectedMenu);
 
   return (
-    <div>
+    <div style={{backgroundColor: "#f0f0f0", borderRadius: "10px", padding: "3px"}}>
       {selectedMenu === "Stellantis" && (
         <>
           <HeaderNav activeTab={activeTab} setActiveTab={setActiveTab} />
