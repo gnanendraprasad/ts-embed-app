@@ -11,10 +11,10 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
   const selectedItem = menuItems.find((item) => item.key === selectedMenu);
 
   return (
-    <>
+    <div>
     {selectedMenu === "Stellantis"?(
       <Tabs
-        defaultActiveKey="profile"
+        defaultActiveKey="gps"
         id="fill-tab-example"
         className="mb-3"
         fill
@@ -32,14 +32,13 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
             />
           )}
         </Tab>
-        <Tab eventKey="opt2" title="Option2">
-
-        </Tab>
-      </Tabs>):(
-        <h1>Nothing here yet</h1>
+      </Tabs>
+      ):(
+      <>
+      </>
       )
-}
-    </>
+    }
+    </div>
   );
 };
 

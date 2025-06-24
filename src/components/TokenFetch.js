@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TS_HOST, username, password } from "../config";
-
+import App from "../App";
 const URL = TS_HOST + "/callosum/v1/tspublic/v1/session/login";
 
 const TokenFetch = () => {
@@ -42,11 +42,11 @@ const TokenFetch = () => {
         <>
             {isLoggedIn ? (
             <>
-                {console.log("Cookie is set")}
+                <App />
             </>
         ) : (
             <>
-                {console.log("Loading")}
+                <p>Loading..If it's too long check for login</p>
             </>
         )}
         </>

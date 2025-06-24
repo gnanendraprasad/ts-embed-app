@@ -17,10 +17,7 @@ const Sidebar = ({selectedMenu, setSelectedMenu, menuItems}) => {
           </div>
         ))} */}
         <div key={"Stellantis"} className={`menu-item ${selectedMenu === "Stellantis" ? "active" : ""}`} onClick={()=>{setSelectedMenu("Stellantis");}}>
-        {"Stellantis"}
-        </div>
-        <div key={"Data Check"} className={`menu-item ${selectedMenu === "Data Check" ? "active" : ""}`} onClick={()=>{setSelectedMenu("Data Check");}}>
-        {"Data Check"}
+        {"Telematics"}
         </div>
     </>
   );
