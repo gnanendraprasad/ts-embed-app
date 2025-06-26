@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Stellantis from "./SidebarItems/Stellantis";
 import HeaderNav from "./HeaderNav";
+import Novobiz from "./NovoBiz/novobiz";
+import Novonsp from "./NovoNSP/Novonsp";
+import ProdMob from "./ProdMob/ProdMob";
+import TeamProductivity from "./TeamProductivity/TeamProductivity";
 
 const Maincontent = ({ selectedMenu, menuItems }) => {
   const [policyId, setPolicyId] = useState("");
@@ -10,11 +14,15 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
 
   const selectedItem = menuItems.find((item) => item.key === selectedMenu);
 
+  const navItems = [
+    { key: "gps", label: "GPS" },
+  ];
+
   return (
-    <div style={{backgroundColor: "#f0f0f0", borderRadius: "10px", padding: "3px"}}>
+    <div style={{backgroundColor: "#f0f0f0", padding: "3px"}}>
       {selectedMenu === "Stellantis" && (
         <>
-          <HeaderNav activeTab={activeTab} setActiveTab={setActiveTab} />
+          <HeaderNav activeTab={activeTab} setActiveTab={setActiveTab} navItems={navItems} />
           {activeTab === "gps" && (
             <Stellantis
               selectedItem={selectedItem}
@@ -26,6 +34,26 @@ const Maincontent = ({ selectedMenu, menuItems }) => {
               setTripId={setTripId}
             />
           )}
+        </>
+      )}
+      {selectedMenu === "Novobiz" && (
+        <>
+            <Novobiz />
+        </>
+      )}
+      {selectedMenu === "Novonsp" && (
+        <>
+            <Novonsp />
+        </>
+      )}
+      {selectedMenu === "prod_mob" && (
+        <>
+            <ProdMob />
+        </>
+      )}
+      {selectedMenu === "team_productivity" && (
+        <>
+            <TeamProductivity />
         </>
       )}
     </div>

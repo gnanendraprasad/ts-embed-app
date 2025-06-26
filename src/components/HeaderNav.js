@@ -1,9 +1,6 @@
 import React from "react";
 
-const HeaderNav = ({ activeTab, setActiveTab }) => {
-  const navItems = [
-    { key: "gps", label: "GPS" },
-  ];
+const HeaderNav = ({ activeTab, setActiveTab, navItems }) => {
 
   return (
     <div className="header-navbar" style={{borderRadius: "10px", padding: "5px"}}>
@@ -11,7 +8,9 @@ const HeaderNav = ({ activeTab, setActiveTab }) => {
         <div style={{paddingLeft: "3vw", paddingRight: "3vw"}}
           key={item.key}
           className={`nav-item ${activeTab === item.key ? "active" : ""}`}
-          onClick={() => setActiveTab(item.key)}
+          onClick={() => {
+          setActiveTab(item.key);
+          }}
         >
           {item.label}
         </div>
