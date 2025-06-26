@@ -20,13 +20,13 @@ const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
       });
     }
 
-    if (partners) {
-    runtimeFilters.push({
-      columnName: 'Partner',
-      operator: RuntimeFilterOp.IN,
-      values: partners,
-    });
-  }
+    if (partners && partners.length > 0) {
+      runtimeFilters.push({
+        columnName: 'Partner',
+        operator: RuntimeFilterOp.IN,
+        values: partners,
+      });
+    }
 
     const liveboard = new LiveboardEmbed(ref.current, {
       liveboardId,
