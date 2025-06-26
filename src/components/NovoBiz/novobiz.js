@@ -120,7 +120,9 @@ const Novobiz = () => {
                 selectedPartners.includes(opt.value)
               )}
               onChange={(selected) =>
-                setSelectedPartners(selected.map((opt) => opt.value))
+                setSelectedPartners(
+                  selected ? selected.map((opt) => opt.value) : []
+                )
               }
               placeholder="Select Partner(s)"
               styles={selectStyles}

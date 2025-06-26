@@ -9,6 +9,14 @@ const NovonspCommon = ({ liveboardId, tabID }) => {
 
   ref.current.innerHTML = ''; // Clear previous embeds
 
+  // const runtimeFilters = [];
+
+  //     runtimeFilters.push({
+  //       columnName: 'Event At',
+  //       operator: RuntimeFilterOp.GT,
+  //       values: ['04/01/2025'],
+  //     });
+
   const liveboard = new LiveboardEmbed(ref.current, {
     liveboardId,
     frameParams: {
@@ -17,6 +25,7 @@ const NovonspCommon = ({ liveboardId, tabID }) => {
     },
     hideLiveboardHeader: true,
     activeTabId: tabID,
+    // runtimeFilters,
   });
 
   liveboard.render();

@@ -3,12 +3,14 @@ import { LiveboardEmbed, RuntimeFilterOp } from "@thoughtspot/visual-embed-sdk";
 
 
 const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
+
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!ref.current || !liveboardId) return;
 
-    ref.current.innerHTML = ""; // Clear previous embeds
+    if (ref.current) {
+      ref.current.innerHTML = '';
+    }
 
     const runtimeFilters = [];
 
@@ -27,7 +29,6 @@ const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
       values: partners,
     });
   }
-
     const liveboard = new LiveboardEmbed(ref.current, {
       liveboardId,
       frameParams: {
@@ -39,7 +40,6 @@ const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
       activeTabId: tabID,
       runtimeFilters,
     });
-    console.log(runtimeFilters);
     liveboard.render();
   }, [liveboardId, tabID, selectedDate, partners]);
 
