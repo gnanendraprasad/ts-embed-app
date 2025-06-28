@@ -1,37 +1,83 @@
-import React, { useEffect, useRef } from 'react';
-import { LiveboardEmbed } from '@thoughtspot/visual-embed-sdk';
+import { useEffect, useRef } from "react";
+import {
+  LiveboardEmbed,
+  Action,
+  RuntimeFilterOp,
+} from "@thoughtspot/visual-embed-sdk";
+import {convertDateEpoch} from "../../ConvertDateEpoch";
 
-const NovonspCommon = ({ liveboardId, tabID }) => {
+const NovonspCommon = ({ liveboardId, vizId, selector, selectedDate, frameParams }) => {
   const ref = useRef(null);
 
   useEffect(() => {
-  if (!ref.current || !liveboardId) return;
+    if (!ref.current || !liveboardId || !vizId) return;
 
-  ref.current.innerHTML = ''; // Clear previous embeds
+    ref.current.innerHTML = "";
 
-  // const runtimeFilters = [];
+    const runtimeFilters = [];
 
-  //     runtimeFilters.push({
-  //       columnName: 'Event At',
-  //       operator: RuntimeFilterOp.GT,
-  //       values: ['04/01/2025'],
-  //     });
+  if (selectedDate) {
+  const endDate = new Date(); // now
 
-  const liveboard = new LiveboardEmbed(ref.current, {
-    liveboardId,
-    frameParams: {
-      height: '100%',
-      width: '100%',
-    },
-    hideLiveboardHeader: true,
-    activeTabId: tabID,
-    // runtimeFilters,
+  const startEpoch = convertDateEpoch(selectedDate);
+  const endEpoch = convertDateEpoch(endDate);     // in seconds
+
+  runtimeFilters.push({
+    columnName: "Event At",
+    operator: RuntimeFilterOp.BW, // Between
+    values: [startEpoch, endEpoch],
   });
+  runtimeFilters.push({
+    columnName: "Policy Effective Date",
+    operator: RuntimeFilterOp.BW, // Between
+    values: [startEpoch, endEpoch],
+  });
+  runtimeFilters.push({
+    columnName: "Bind Effective Date",
+    operator: RuntimeFilterOp.BW, // Between
+    values: [startEpoch, endEpoch],
+  });
+  runtimeFilters.push({
+    columnName: "Enrollment Date",
+    operator: RuntimeFilterOp.BW, // Between
+    values: [startEpoch, endEpoch],
+  });
+  runtimeFilters.push({
+    columnName: "Start Time Utc Date",
+    operator: RuntimeFilterOp.BW, // Between
+    values: [startEpoch, endEpoch],
+  });
+}
 
-  liveboard.render();
-}, [liveboardId, tabID]);
+    const embed = new LiveboardEmbed(`#${selector}`, {
+      liveboardId,
+      vizId, // no wrapping
+      frameParams,
+      hiddenActions: [
+        Action.CopyLink,
+        Action.Download,
+        Action.ShowUnderlyingData,
+        Action.Pin,
+        Action.SpotIQAnalyze,
+        Action.RenameModalTitleDescription,
+        Action.SpotterFeedback,
+        Action.CreateMonitor,
+      ],
+      runtimeFilters,
+      
+      
+    });
 
-  return <div style={{ height: '100vh', width: '100%' }} ref={ref} />;
+    embed.render();
+  }, [liveboardId, vizId, selector, selectedDate, frameParams]);
+
+  return (
+    <div
+      id={selector}
+      style={{height:"inherit"}}
+      ref={ref}
+    />
+  );
 };
 
 export default NovonspCommon;

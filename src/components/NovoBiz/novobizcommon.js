@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { LiveboardEmbed, RuntimeFilterOp } from "@thoughtspot/visual-embed-sdk";
+import { LiveboardEmbed, RuntimeFilterOp, Action } from "@thoughtspot/visual-embed-sdk";
+import { convertDateEpoch } from "../../ConvertDateEpoch";
 
 
 const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
@@ -15,16 +16,17 @@ const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
     const runtimeFilters = [];
 
     if (selectedDate) {
+      const epochDate = convertDateEpoch(selectedDate);
       runtimeFilters.push({
         columnName: 'AZ log time',
         operator: RuntimeFilterOp.EQ,
-        values: [selectedDate],
+        values: [epochDate],
       });
     }
 
     if (partners) {
     runtimeFilters.push({
-      columnName: 'Partner',
+      columnName: "Partner",
       operator: RuntimeFilterOp.IN,
       values: partners,
     });
@@ -39,6 +41,15 @@ const NovobizCommon = ({ liveboardId, tabID, selectedDate, partners }) => {
       hideTabPanel: true,
       activeTabId: tabID,
       runtimeFilters,
+      hiddenActions: [
+              Action.CopyLink,
+              Action.Download,
+              Action.ShowUnderlyingData,
+              Action.Pin,
+              Action.SpotIQAnalyze,
+              Action.RenameModalTitleDescription,
+              Action.SpotterFeedback,
+            ],
     });
     liveboard.render();
   }, [liveboardId, tabID, selectedDate, partners]);
