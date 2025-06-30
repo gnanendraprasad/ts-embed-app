@@ -5,6 +5,7 @@ import Maincontent from "./components/Maincontent";
 
 function App() {
   const [selectedMenu, setSelectedMenu] = useState("Stellantis");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const menuItems = [
         {
@@ -24,15 +25,26 @@ function App() {
 
   return (
     <div className="app-container">
-      
-      <div className="sidebar">
-        <Sidebar selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} menuItems={menuItems}/>
+      <div className="app-header">
+        <button
+          className="menu-button"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          &#9776;
+        </button>
       </div>
 
-      <div className="main-content" style={{padding:"0px"}}>
-        <Maincontent selectedMenu={selectedMenu} menuItems={menuItems}/>
+      <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+        <Sidebar
+          selectedMenu={selectedMenu}
+          setSelectedMenu={setSelectedMenu}
+          menuItems={menuItems}
+        />
       </div>
-      
+
+      <div className="main-content" style={{ padding: "0px" }}>
+        <Maincontent selectedMenu={selectedMenu} menuItems={menuItems} />
+      </div>
     </div>
   );
 }
