@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Configuration
+
+Create a `.env` file in the project root and provide the following variables so the application can connect to ThoughtSpot:
+
+```env
+REACT_APP_TS_HOST=https://your-thoughtspot-host
+REACT_APP_TS_USERNAME=your-username
+REACT_APP_TS_PASSWORD=your-password
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import HeaderNav from "../HeaderNav";
 import NovobizCommon from "./novobizcommon";
 import Select from "react-select";
-import { TS_HOST } from "../../config";
+import { TS_HOST } from "../../env";
 
 const API_URL = `${TS_HOST}/api/rest/2.0/searchdata`;
 

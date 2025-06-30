@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Select from "react-select";
 import StellantisCommon from "./StellantisCommon";
-import { TS_HOST } from "../../config";
+import { TS_HOST } from "../../env";
 
 const API_URL = `${TS_HOST}/api/rest/2.0/searchdata`;
 
@@ -17,6 +17,9 @@ const Stellantis = ({
   const [policyOptions, setPolicyOptions] = useState([]);
   const [deviceOptions, setDeviceOptions] = useState([]);
   const [tripOptions, setTripOptions] = useState([]);
+  const policyCache = useRef(null);
+  const deviceCache = useRef({});
+  const tripCache = useRef({});
 
   const [loadingPolicies, setLoadingPolicies] = useState(true);
   const [loadingDevices, setLoadingDevices] = useState(false);
@@ -45,6 +48,11 @@ const Stellantis = ({
   // Load Policy options on component mount
   useEffect(() => {
     const fetchPolicyOptions = async () => {
+      if (policyCache.current) {
+        setPolicyOptions(policyCache.current);
+        setLoadingPolicies(false);
+        return;
+      }
       try {
         const res = await fetch(API_URL, {
           method: "POST",
@@ -68,6 +76,7 @@ const Stellantis = ({
           .filter(Boolean)
           .map((id) => ({ value: id, label: id }));
 
+        policyCache.current = options;
         setPolicyOptions(options);
       } catch (err) {
         console.error("Failed to fetch policy options", err);
@@ -88,6 +97,11 @@ const Stellantis = ({
         return;
       }
 
+      if (deviceCache.current[policyId]) {
+        setDeviceOptions(deviceCache.current[policyId]);
+        setLoadingDevices(false);
+        return;
+      }
       setLoadingDevices(true);
       setDeviceId("");
       setTripId("");
@@ -115,6 +129,7 @@ const Stellantis = ({
           .filter(Boolean)
           .map((id) => ({ value: id, label: id }));
 
+        deviceCache.current[policyId] = options;
         setDeviceOptions(options);
       } catch (err) {
         console.error(`Failed to fetch device data for policy: ${policyId}`, err);
@@ -135,6 +150,11 @@ const Stellantis = ({
         return;
       }
 
+      if (tripCache.current[deviceId]) {
+        setTripOptions(tripCache.current[deviceId]);
+        setLoadingTrips(false);
+        return;
+      }
       setLoadingTrips(true);
       setTripId("");
 
@@ -161,6 +181,7 @@ const Stellantis = ({
           .filter(Boolean)
           .map((id) => ({ value: id, label: id }));
 
+        tripCache.current[deviceId] = options;
         setTripOptions(options);
       } catch (err) {
         console.error(`Failed to fetch trip data for device: ${deviceId}`, err);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TS_HOST, username, password } from "../config";
+import { TS_HOST, USERNAME, PASSWORD } from "../env";
 import App from "../App";
 const URL = TS_HOST + "/callosum/v1/tspublic/v1/session/login";
 
@@ -17,8 +17,8 @@ const TokenFetch = () => {
                         "X-Requested-By": "ThoughtSpot"
                     },
                     body: new URLSearchParams({
-                        username,
-                        password,
+                        username: USERNAME,
+                        password: PASSWORD,
                         rememberme: "false"
                     }),
                     credentials: "include" // Important for cookies!
