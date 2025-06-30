@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Select from "react-select";
 import StellantisCommon from "./StellantisCommon";
-import { TS_HOST } from "../../env";
+import { TS_HOST } from "../../config";
 
 const API_URL = `${TS_HOST}/api/rest/2.0/searchdata`;
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TS_HOST, USERNAME, PASSWORD } from "../env";
+import { TS_HOST, USERNAME, PASSWORD } from "../config";
 import App from "../App";
 const URL = TS_HOST + "/callosum/v1/tspublic/v1/session/login";
 

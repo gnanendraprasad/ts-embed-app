@@ -1,5 +1,5 @@
 import { init, LiveboardEmbed, Action } from '@thoughtspot/visual-embed-sdk';
-import { TS_HOST } from './env';
+import { TS_HOST } from './config';
 
 let initialized = false;
 
