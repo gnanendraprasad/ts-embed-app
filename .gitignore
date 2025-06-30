@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /src/config.js
+/creds.env
 
 # testing
 /coverage
