@@ -1,0 +1,60 @@
+$primary-color: #ffa500;
+$sidebar-bg: #f4f4f4;
+$text-color: #333;
+$border-color: #ddd;
+
+.layout {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdada, sans-serif;
+}
+
+.sidenav {
+  width: 220px;
+  background-color: $sidebar-bg;
+  padding: 20px;
+  border-right: 1px solid $border-color;
+
+  .logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: $primary-color;
+  }
+
+  .nav-links {
+    a {
+      display: block;
+      margin: 12px 0;
+      color: $text-color;
+      text-decoration: none;
+      transition: all 0.2s;
+
+      &:hover {
+        text-decoration: underline;
+        color: darken($text-color, 20%);
+      }
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+
+  .header {
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    .brand {
+      color: $primary-color;
+    }
+  }
+
+  .content {
+    font-size: 16px;
+    color: $text-color;
+  }
+}
