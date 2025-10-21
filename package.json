@@ -1,3 +1,33 @@
+<<<<<<< Updated upstream
+{
+  "name": "ts-embed-app-angular",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^15.1.0",
+    "rxjs": "^7.8.1",
+    "zone.js": "^0.14.2",
+    "@thoughtspot/visual-embed-sdk": "^1.38.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^17.0.0",
+    "typescript": "^5.4.0"
+  },
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test"
+  }
+}
+=======
 {
   "name": "ts-embed-app",
   "version": "0.1.0",
@@ -12,7 +42,7 @@
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.10.1",
     "web-vitals": "^2.1.4"
   },
@@ -41,3 +71,4 @@
     ]
   }
 }
+>>>>>>> Stashed changes
